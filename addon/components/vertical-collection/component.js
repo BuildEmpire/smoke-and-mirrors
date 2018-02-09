@@ -548,12 +548,14 @@ const VerticalCollection = Component.extend({
       .concat((childComponents.slice(0, topComponentIndex)))
       .concat(childComponents.slice(bottomComponentIndex));
 
-    for (let j = 0; j < toCull.length; j++) {
-      toCull[j].cull();
-    }
-    for (let k = 0; k < toShow.length; k++) {
-      toShow[k].show();
-    }
+    Ember.run(() => {
+      for (let j = 0; j < toCull.length; j++) {
+        toCull[j].cull();
+      }
+      for (let k = 0; k < toShow.length; k++) {
+        toShow[k].show();
+      }
+    });
 
     this._scheduleScrollSync();
 
