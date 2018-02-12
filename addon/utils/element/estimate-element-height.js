@@ -1,4 +1,6 @@
-import { assert } from 'smoke-and-mirrors/-debug/helpers';
+import Ember from 'ember';
+
+const { assert } = Ember;
 
 export default function estimateElementHeight(element, fallbackHeight) {
   assert(`You called estimateElement height without a fallbackHeight`, fallbackHeight);

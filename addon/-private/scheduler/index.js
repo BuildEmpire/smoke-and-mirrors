@@ -54,7 +54,8 @@ export class Scheduler {
     let i;
     let q;
 
-    // run.begin();
+    // Make sure a run-loop is active
+    run.begin();
     if (this.sync.length) {
       q = this.sync;
       this.sync = [];
