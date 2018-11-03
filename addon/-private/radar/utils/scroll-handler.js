@@ -38,31 +38,36 @@ export class ScrollHandler {
   }
 
   removeElementHandler(element, handler) {
-    let index = this.elements.indexOf(element);
-    let elementCache = this.handlers[index];
+    //HACK - cleanup entirely to prevent searching for not existing hadlers etc
+    this.length=0;
+    this.elements=new Array(DEFAULT_ARRAY_SIZE);
+    this.handlers=new Array(DEFAULT_ARRAY_SIZE);
 
-    if (elementCache && elementCache.handlers) {
-      let index = elementCache.handlers.indexOf(handler);
-
-      if (index === -1) {
-        throw new Error('Attempted to remove an unattached handler');
-      }
-
-      elementCache.handlers.splice(index, 1);
-
-      // cleanup element entirely if needed
-      if (!elementCache.handlers.length) {
-        this.handlers.splice(index, 1);
-
-        index = this.elements.indexOf(element);
-        this.elements.splice(index, 1);
-        this.length--;
-        this.maxLength--;
-      }
-
-    } else {
-      throw new Error('Attempted to remove an unattached handler');
-    }
+    //let index = this.elements.indexOf(element);
+    //let elementCache = this.handlers[index];
+    //
+    //if (elementCache && elementCache.handlers) {
+    //  let index = elementCache.handlers.indexOf(handler);
+    //
+    //  if (index === -1) {
+    //    throw new Error('Attempted to remove an unattached handler');
+    //  }
+    //
+    //  elementCache.handlers.splice(index, 1);
+    //
+    //  // cleanup element entirely if needed
+    //  if (!elementCache.handlers.length) {
+    //    this.handlers.splice(index, 1);
+    //
+    //    index = this.elements.indexOf(element);
+    //    this.elements.splice(index, 1);
+    //    this.length--;
+    //    this.maxLength--;
+    //  }
+    //
+    //} else {
+    //  throw new Error('Attempted to remove an unattached handler');
+    //}
   }
 
   poll() {
